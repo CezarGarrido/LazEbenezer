@@ -3,8 +3,8 @@ name: Build App
 on:
   pull_request:
   push:
-    paths-ignore: [ "README.md" ]
-    branches: [ "main", "releases/*" ]
+    paths-ignore: ["README.md"]
+    branches: ["main", "releases/*"]
 
 jobs:
   build:
@@ -14,31 +14,39 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
         lazarus-versions: ["dist"]
-
     steps:
-    - name: Cechout source code
-      uses: actions/checkout@v4
+      - name: Cechout source code
+        uses: actions/checkout@v4
 
-    - name: Install Lazarus
-      uses: gcarreno/setup-lazarus@master
-      with:
-        lazarus-version: ${{ matrix.lazarus-versions }}
-        include-packages: "Synapse 40.1"
-        with-cache: true
+      - name: Install Lazarus
+        uses: gcarreno/setup-lazarus@master
+        with:
+          lazarus-version: ${{ matrix.lazarus-versions }}
+          include-packages: "Synapse 40.1"
+          with-cache: true
 
-    - name: Build the Main Application (Windows)
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      run: lazbuild -B --bm=Release "src/lazaruswithgithubactions.lpi"
+      - name: Build the Main Application (Windows)
+        if: ${{ matrix.operating-system == 'windows-latest' }}
+        run: lazbuild -B --bm=Release "src/lazaruswithgithubactions.lpi"
 
-    - name: Build the Main Application (Ubuntu)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: lazbuild -B --bm=Release "src/lazaruswithgithubactions.lpi"
-#        echo Installing Qt5 Dev
-#        sudo apt update
-#        sudo apt install libqt5pas-dev -y
-#        echo Building with Qt5
-#        lazbuild -B --bm=Release --ws=qt5 "src/lazaruswithgithubactions.lpi"
+      - name: Build the Main Application (Ubuntu)
+        if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+        run: lazbuild -B --bm=Release "src/lazaruswithgithubactions.lpi"
+      #        echo Installing Qt5 Dev
+      #        sudo apt update
+      #        sudo apt install libqt5pas-dev -y
+      #        echo Building with Qt5
+      #        lazbuild -B --bm=Release --ws=qt5 "src/lazaruswithgithubactions.lpi"
 
-    - name: Build the Main Application (macOS)
-      if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B --bm=Release --ws=cocoa "src/lazaruswithgithubactions.lpi"
+      - name: Build the Main Application (macOS)
+        if: ${{ matrix.operating-system == 'macos-latest' }}
+        run:
+          lazbuild -B --bm=Release --ws=cocoa "src/lazaruswithgithubactions.lpi"
+
+          # Passo 5: Upload de artefatos (arquivos gerados pelo Maven e pacotes)
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: LazEbenezer-${{ matrix.operating-system }} # Nome único com ID da execução
+          path: |
+            bin/*

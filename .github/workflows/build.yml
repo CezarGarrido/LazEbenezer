@@ -1,0 +1,51 @@
+name: Build Lazarus Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Lazarus Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      # Clonar o repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Instalar Lazarus e FPC
+      - name: Install Lazarus and FPC on ${{ matrix.os }}
+        run: |
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            sudo apt update
+            sudo apt install -y fpc lazarus
+          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            choco install lazarus --version=2.2.6
+          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            brew install fpc lazarus
+          fi
+
+      # Compilar o projeto
+      - name: Compile project
+        run: |
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            lazbuild --build-mode=Release MyProject.lpi
+          else
+            lazbuild --build-mode=Release MyProject.lpi
+          fi
+
+      # Fazer upload dos artefatos gerados
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build-${{ matrix.os }}
+          path: |
+            *.exe
+            *.app
+            ./bin/

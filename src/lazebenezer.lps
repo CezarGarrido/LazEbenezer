@@ -19,11 +19,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmMainUnit"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="13"/>
-        <CursorPos X="20" Y="18"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="resourceunit.pas"/>
@@ -37,10 +35,9 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <CursorPos X="28" Y="16"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="15" Y="4"/>
         <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/include/customform.inc"/>
@@ -110,40 +107,7 @@
         <UsageCount Value="10"/>
       </Unit12>
     </Units>
-    <JumpHistory Count="8" HistoryIndex="7">
-      <Position1>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="19" Column="38"/>
-      </Position1>
-      <Position2>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="24" Column="38"/>
-      </Position2>
-      <Position3>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="7" Column="7"/>
-      </Position3>
-      <Position4>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="41" Column="29" TopLine="14"/>
-      </Position4>
-      <Position5>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="40" Column="29" TopLine="13"/>
-      </Position5>
-      <Position6>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="11" Column="29"/>
-      </Position6>
-      <Position7>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="8" Column="22"/>
-      </Position7>
-      <Position8>
-        <Filename Value="fmremployee.pas"/>
-        <Caret Line="16" Column="28"/>
-      </Position8>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>

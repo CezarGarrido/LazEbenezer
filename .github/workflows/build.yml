@@ -27,8 +27,8 @@ jobs:
       - name: Install Lazarus and FPC on Ubuntu
         if: ${{ contains(matrix.os, 'ubuntu') }}
         run: |
-          choco install lazarus --version=2.2.6
-
+          sudo apt update
+          sudo apt install -y fpc lazarus
       - name: Install Lazarus and FPC on MacOS
         if: ${{ contains(matrix.os, 'macos') }}
         run: |

@@ -1,50 +1,50 @@
-name: Build Lazarus Project
+name: Build App
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
+  push:
+    paths-ignore: [ "README.md" ]
+    branches: [ "main", "releases/*" ]
 
 jobs:
   build:
-    name: Lazarus Build
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.operating-system }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        lazarus-versions: ["dist", "stable", "3.4", "2.2.6"]
 
     steps:
-      # Clonar o repositório
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      # Instalar Lazarus e FPC
-      - name: Install Lazarus and FPC on Windows
-        if: ${{ contains(matrix.os, 'windows') }}
-        run: |
-          choco install lazarus --version=2.2.6
+    - name: Cechout source code
+      uses: actions/checkout@v4
 
-      - name: Install Lazarus and FPC on Ubuntu
-        if: ${{ contains(matrix.os, 'ubuntu') }}
-        run: |
-          sudo apt update
-          sudo apt install -y fpc lazarus
-      - name: Install Lazarus and FPC on MacOS
-        if: ${{ contains(matrix.os, 'macos') }}
-        run: |
-          brew install fpc lazarus
+    - name: Install Lazarus
+      uses: gcarreno/setup-lazarus@master
+      with:
+        lazarus-version: ${{ matrix.lazarus-versions }}
+        include-packages: "Synapse 40.1"
+        with-cache: true
 
-      # Compilar o projeto
-      - name: Compile project
-        run: |
-          lazbuild --build-mode=Release project1.lpi
+    - name: Build the Main Application (Windows)
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      run: lazbuild -B --bm=Release "src/lazaruswithgithubactions.lpi"
 
-      # Fazer upload dos artefatos gerados
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Build-${{ matrix.os }}
-          path: |
-            *.exe
-            *.app
-            ./bin/
+    - name: Build the Main Application (Ubuntu)
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: lazbuild -B --bm=Release "src/lazaruswithgithubactions.lpi"
+#        echo Installing Qt5 Dev
+#        sudo apt update
+#        sudo apt install libqt5pas-dev -y
+#        echo Building with Qt5
+#        lazbuild -B --bm=Release --ws=qt5 "src/lazaruswithgithubactions.lpi"
+
+    - name: Build the Main Application (macOS)
+      if: ${{ matrix.operating-system == 'macos-latest' }}
+      run: lazbuild -B --bm=Release --ws=cocoa "src/lazaruswithgithubactions.lpi"
+
+    - name: Build the Unit Tests Application
+      run: lazbuild -B --bm=Release "tests/testconsoleapplication.lpi"
+
+    - name: Run the Unit Tests Application
+      run: bin/testconsoleapplication "--all" "--format=plain"

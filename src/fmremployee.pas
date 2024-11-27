@@ -5,7 +5,7 @@ unit fmremployee;
 interface
 
 uses
-  Classes, SysUtils, PQConnection1, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, PQConnection, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
 

@@ -3,15 +3,13 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="9">
+    <Units Count="11">
       <Unit0>
         <Filename Value="lazebenezer.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="21" Y="12"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="21"/>
       </Unit0>
       <Unit1>
         <Filename Value="frmmainunit.pas"/>
@@ -20,17 +18,16 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmMainUnit"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="44"/>
         <CursorPos X="35" Y="62"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="21"/>
       </Unit1>
       <Unit2>
         <Filename Value="resourceunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResourceUnit"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit2>
       <Unit3>
         <Filename Value="fmremployee.pas"/>
@@ -38,8 +35,9 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <CursorPos X="19" Y="12"/>
-        <UsageCount Value="20"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="32" Y="13"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -74,34 +72,57 @@
       <Unit8>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/forms.pp"/>
         <UnitName Value="Forms"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="39"/>
         <CursorPos X="22" Y="65"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit8>
+      <Unit9>
+        <Filename Value="../../../../.lazarus/onlinepackagemanager/packages/zeosdbo/src/core/ZClasses.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2024"/>
+        <CursorPos X="13" Y="2041"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="../../../../.lazarus/onlinepackagemanager/packages/zeosdbo/src/core/ZXmlCompat.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="132"/>
+        <CursorPos X="18" Y="149"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit10>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
+    <JumpHistory Count="7" HistoryIndex="6">
       <Position1>
-        <Filename Value="frmmainunit.pas"/>
-        <Caret Line="61" Column="43" TopLine="44"/>
+        <Filename Value="fmremployee.pas"/>
+        <Caret Line="19" Column="38"/>
       </Position1>
       <Position2>
-        <Filename Value="/usr/share/lazarus/2.0.12/lcl/forms.pp"/>
-        <Caret Line="855" Column="14" TopLine="840"/>
+        <Filename Value="fmremployee.pas"/>
+        <Caret Line="24" Column="38"/>
       </Position2>
       <Position3>
-        <Filename Value="/usr/share/lazarus/2.0.12/lcl/forms.pp"/>
-        <Caret Line="733" Column="14" TopLine="717"/>
+        <Filename Value="fmremployee.pas"/>
+        <Caret Line="7" Column="7"/>
       </Position3>
       <Position4>
         <Filename Value="fmremployee.pas"/>
-        <Caret Line="19" Column="38"/>
+        <Caret Line="41" Column="29" TopLine="14"/>
       </Position4>
       <Position5>
         <Filename Value="fmremployee.pas"/>
-        <Caret Line="24" Column="38"/>
+        <Caret Line="40" Column="29" TopLine="13"/>
       </Position5>
+      <Position6>
+        <Filename Value="fmremployee.pas"/>
+        <Caret Line="11" Column="29"/>
+      </Position6>
+      <Position7>
+        <Filename Value="fmremployee.pas"/>
+        <Caret Line="8" Column="22"/>
+      </Position7>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

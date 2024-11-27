@@ -1,10 +1,10 @@
 object frmMain: TfrmMain
-  Left = 966
+  Left = 733
   Height = 1016
-  Top = 45
+  Top = 705
   Width = 935
   Caption = 'LazEbenezer'
-  ClientHeight = 989
+  ClientHeight = 991
   ClientWidth = 935
   Menu = MainMenu
   OnCreate = FormCreate
@@ -13,7 +13,7 @@ object frmMain: TfrmMain
   object Panel2: TPanel
     Left = 0
     Height = 50
-    Top = 939
+    Top = 941
     Width = 935
     Align = alBottom
     TabOrder = 0

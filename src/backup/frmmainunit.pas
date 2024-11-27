@@ -58,7 +58,7 @@ procedure TfrmMain.MenuItem4Click(Sender: TObject);
 begin
   if not Assigned(frmEmployee) then
     frmEmployee := TForm1.Create(Self);  // Create the form if not already created
-    frmEmployee.Position := poScreenCenter; // Opcional: Centraliza o formulário na tela
+    frmEmployee.Position := poOwnerFormCenter; // Opcional: Centraliza o formulário na tela
 
   //frmEmployee.Parent := Panel2; // Define o painel onde o formulário será mostrado
 

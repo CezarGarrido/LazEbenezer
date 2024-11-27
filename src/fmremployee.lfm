@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 544
+  Left = 592
   Height = 523
-  Top = 279
+  Top = 347
   Width = 816
   Caption = 'Form1'
   ClientHeight = 523
@@ -16,11 +16,13 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = GroupBox1Click
   end
-  object ZConnection1: TZConnection
-    ControlsCodePage = cCP_UTF8
-    DisableSavepoints = False
-    Port = 0
-    Left = 469
-    Top = 134
+  object PQConnection1: TPQConnection
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = PQConnection1AfterConnect
+    KeepConnection = False
+    HostName = 'localhost'
+    Left = 472
+    Top = 80
   end
 end

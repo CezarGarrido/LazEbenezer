@@ -5,7 +5,7 @@ unit fmremployee;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ZConnection;
+  Classes, SysUtils, PQConnection1, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
 
@@ -13,8 +13,9 @@ type
 
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
-    ZConnection1: TZConnection;
+    PQConnection1: TPQConnection;
     procedure GroupBox1Click(Sender: TObject);
+    procedure PQConnection1AfterConnect(Sender: TObject);
   private
 
   public
@@ -31,6 +32,11 @@ implementation
 { TForm1 }
 
 procedure TForm1.GroupBox1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.PQConnection1AfterConnect(Sender: TObject);
 begin
 
 end;

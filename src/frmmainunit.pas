@@ -12,21 +12,27 @@ uses
 , Graphics
 , Dialogs
 , ExtCtrls
-, StdCtrls
+, StdCtrls, Menus
 , httpsend
 , ResourceUnit
+, fmremployee
 ;
 
 type
 
   { TfrmMain }
     TfrmMain = class(TForm)
-    Memo1: TMemo;
-      Panel1: TPanel;
+    MainMenu: TMainMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
       Panel2: TPanel;
-      Button1: TButton;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
   private
 
   public
@@ -35,6 +41,7 @@ type
 
 var
   frmMain: TfrmMain;
+  frmEmployee: TForm1;
 
 implementation
 
@@ -44,33 +51,30 @@ implementation
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
-  Panel1.Caption:= rsTitle;
+
+end;
+
+procedure TfrmMain.MenuItem4Click(Sender: TObject);
+begin
+  if not Assigned(frmEmployee) then
+    frmEmployee := TForm1.Create(Self);  // Create the form if not already created
+    frmEmployee.Position := poOwnerFormCenter; // Opcional: Centraliza o formulário na tela
+
+  //frmEmployee.Parent := Panel2; // Define o painel onde o formulário será mostrado
+
+  frmEmployee.ShowModal;
+end;
+
+procedure TfrmMain.Panel1Click(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmMain.Button1Click(Sender: TObject);
 var
   http: THTTPSend;
 begin
-  try
-    Button1.Enabled:= False;
-    Memo1.Append(rsGet);
-    Application.ProcessMessages;
-    http:= THTTPSend.Create;
-    try
-      http.HTTPMethod('GET', 'http://packages.lazarus-ide.org/packagelist.json');
-      Memo1.Append(rsGetDone);
-    except
-      on e: Exception do
-      begin
-        Memo1.Append(rsGetNotDone);
-        ShowMessage(e.Message);
-      end;
-    end;
-  finally
-    http.Free;
-    Application.ProcessMessages;
-    Button1.Enabled:= True
-  end;
+
 end;
 
 end.

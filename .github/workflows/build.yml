@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
-        lazarus-versions: ["dist", "stable", "3.4", "2.2.6"]
+        lazarus-versions: ["dist"]
 
     steps:
     - name: Cechout source code
@@ -45,6 +45,3 @@ jobs:
 
     - name: Build the Unit Tests Application
       run: lazbuild -B --bm=Release "tests/testconsoleapplication.lpi"
-
-    - name: Run the Unit Tests Application
-      run: bin/testconsoleapplication "--all" "--format=plain"

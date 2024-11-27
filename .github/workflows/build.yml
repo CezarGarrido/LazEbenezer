@@ -18,27 +18,26 @@ jobs:
       # Clonar o repositório
       - name: Checkout repository
         uses: actions/checkout@v3
-
       # Instalar Lazarus e FPC
-      - name: Install Lazarus and FPC on ${{ matrix.os }}
+      - name: Install Lazarus and FPC on Windows
+        if: ${{ contains(matrix.os, 'windows') }}
         run: |
-          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
-            sudo apt update
-            sudo apt install -y fpc lazarus
-          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            choco install lazarus --version=2.2.6
-          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
-            brew install fpc lazarus
-          fi
+          choco install lazarus --version=2.2.6
+
+      - name: Install Lazarus and FPC on Ubuntu
+        if: ${{ contains(matrix.os, 'ubuntu') }}
+        run: |
+          choco install lazarus --version=2.2.6
+
+      - name: Install Lazarus and FPC on MacOS
+        if: ${{ contains(matrix.os, 'macos') }}
+        run: |
+          brew install fpc lazarus
 
       # Compilar o projeto
       - name: Compile project
         run: |
-          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            lazbuild --build-mode=Release MyProject.lpi
-          else
-            lazbuild --build-mode=Release MyProject.lpi
-          fi
+          lazbuild --build-mode=Release project1.lpi
 
       # Fazer upload dos artefatos gerados
       - name: Upload build artifacts

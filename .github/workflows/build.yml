@@ -42,6 +42,3 @@ jobs:
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: lazbuild -B --bm=Release --ws=cocoa "src/lazaruswithgithubactions.lpi"
-
-    - name: Build the Unit Tests Application
-      run: lazbuild -B --bm=Release "tests/testconsoleapplication.lpi"
